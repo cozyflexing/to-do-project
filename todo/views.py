@@ -4,8 +4,14 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from .forms import TodoForm
+from .models import Todo
 
 # Create your views here.
+
+
+def currenttodos(request):
+    todos = Todo.objects.filter(user=request.user)
+    return render(request, "todo/currenttodos.html", {"todos": todos})
 
 
 def home(request):

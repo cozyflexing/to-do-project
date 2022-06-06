@@ -1,0 +1,12 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<a href="{% url 'home' %}"><p>Home</p></a>
+current
+<ul>
+    {% for todo in todos %}
+    <li><p>{{ todo.title }}</p></li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
