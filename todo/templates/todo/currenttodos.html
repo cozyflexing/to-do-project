@@ -5,7 +5,11 @@
 current
 <ul>
     {% for todo in todos %}
-    <li><p>{{ todo.title }}</p></li>
+    <li>
+        {% if todo.important == True %}<b>{{ todo.title }}</b>{% endif %} 
+        {% if todo.important == False %} {{ todo.title }} {% endif %} 
+        {% if todo.memo %} - {{ todo.memo|truncatechars:50 }} {% endif %}
+    </li>
     {% endfor %}
 </ul>
 

@@ -10,7 +10,7 @@ from .models import Todo
 
 
 def currenttodos(request):
-    todos = Todo.objects.filter(user=request.user)
+    todos = Todo.objects.filter(user=request.user, completed__isnull=True)
     return render(request, "todo/currenttodos.html", {"todos": todos})
 
 
