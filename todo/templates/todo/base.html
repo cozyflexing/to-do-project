@@ -1,4 +1,4 @@
-
+<a href="{% url 'home' %}"><p>Home</p></a>
 {% if user.is_authenticated %}
 
 Logged in as {{ user.username }}
@@ -9,7 +9,6 @@ Logged in as {{ user.username }}
 </form>
 
 {% else %}
-<a href="{% url 'home' %}"><p>Home</p></a>
 
 <a href="{% url 'signupuser' %}">Sign Up</a>
 
