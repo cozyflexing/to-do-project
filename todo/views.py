@@ -1,5 +1,5 @@
 from django.db import IntegrityError
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
@@ -83,3 +83,9 @@ def createtodo(request):
         newtodo.user = request.user
         newtodo.save()
         return render(request, "todo/home.html")
+
+
+def viewtodo(request, todo_pk):
+    todo = get_object_or_404(Todo, pk=todo_pk)
+    form = TodoForm(instance=todo)
+    return render(request, "todo/viewtodo.html", {"todo": todo, "form": form})

@@ -1,14 +1,16 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
-<a href="{% url 'home' %}"><p>Home</p></a>
 current
 <ul>
     {% for todo in todos %}
     <li>
-        {% if todo.important == True %}<b>{{ todo.title }}</b>{% endif %} 
-        {% if todo.important == False %} {{ todo.title }} {% endif %} 
-        {% if todo.memo %} - {{ todo.memo|truncatechars:50 }} {% endif %}
+        <a href="{% url 'viewtodo' todo.id %}">
+            {% if todo.important == True %}<b>{{ todo.title }}</b>{% endif %} 
+            {% if todo.important == False %} {{ todo.title }} {% endif %} 
+            {% if todo.memo %} - {{ todo.memo|truncatechars:50 }} {% endif %}
+        </a>
+
     </li>
     {% endfor %}
 </ul>
